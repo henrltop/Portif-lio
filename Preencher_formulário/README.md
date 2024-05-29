@@ -1,3 +1,6 @@
+# caso queria testar
+Deve primeiro fazer a instalação do arquivo executavel (.exe)
+
 ## para testar essa plicação 
 Você deve baixar o arquivo formulário.csv e indicar a *pasta* que eles está localizado quando for iniciar o programa.
 
