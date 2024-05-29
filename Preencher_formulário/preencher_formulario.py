@@ -18,7 +18,6 @@ def iniciar_execucao():
     try:
         df = pd.read_csv(f'{pasta}/formulario.csv')
 
-        # Configura o WebDriver
         driver = webdriver.Chrome()
         wait = WebDriverWait(driver, 10)
 
@@ -26,13 +25,11 @@ def iniciar_execucao():
         wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, 'input[aria-labelledby="i1"]')))
 
         for index, row in df.iterrows():
-            # Selecionar os campos do formulário com base nos atributos `aria-labelledby`
             codigo_input = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'input[aria-labelledby="i1"]')))
             nome_input = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'input[aria-labelledby="i5"]')))
             sobrenome_input = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'input[aria-labelledby="i9"]')))
             curso_input = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'input[aria-labelledby="i13"]')))
 
-            # Preencher os campos
             codigo_input.clear()
             codigo_input.send_keys(row['Código'])
 
@@ -45,11 +42,9 @@ def iniciar_execucao():
             curso_input.clear()
             curso_input.send_keys(row['Vai_fazer_o_Curso'])
 
-            # Clicar no botão de envio
             submit_button = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'div[role="button"]')))
             submit_button.click()
 
-            # Clicar no link "Enviar outra resposta"
             enviar_outra_resposta = wait.until(EC.element_to_be_clickable((By.XPATH, '//a[contains(text(), "Enviar outra resposta")]')))
             enviar_outra_resposta.click()
 
@@ -82,3 +77,5 @@ btn_iniciar = tk.Button(root, text="Iniciar", command=iniciar_execucao)
 btn_iniciar.grid(row=2, column=0, columnspan=3, padx=10, pady=20)
 
 root.mainloop()
+
+#ASS: Henrique
